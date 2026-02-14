@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import type { Page } from '../App';
-import { EagleIcon } from './icons/EagleIcon';
+
 import { HamburgerIcon } from './icons/HamburgerIcon';
 import { CloseIcon } from './icons/CloseIcon';
 
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
       document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]);
-  
+
   const handleNavClick = (page: Page) => {
     setCurrentPage(page);
     setIsMenuOpen(false);
@@ -42,11 +42,11 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
       <header className="bg-slate-900/80 backdrop-blur-sm sticky top-0 z-40 border-b border-amber-400/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <div 
-              className="flex items-center cursor-pointer" 
+            <div
+              className="flex items-center cursor-pointer"
               onClick={() => setCurrentPage('home')}
             >
-               <EagleIcon className="h-10 w-10 text-amber-400" />
+              <img src="/logo.png" alt="Eagle Eye Logo" className="h-12 w-auto object-contain" />
               <span className="ml-3 text-2xl font-bold text-white tracking-wider">
                 EAGLE <span className="text-amber-400">EYE</span>
               </span>
@@ -56,18 +56,17 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
                 <button
                   key={link.page}
                   onClick={() => setCurrentPage(link.page)}
-                  className={`text-lg font-medium transition-colors duration-300 ${
-                    currentPage === link.page
-                      ? 'text-amber-400'
-                      : 'text-gray-300 hover:text-amber-400'
-                  }`}
+                  className={`text-lg font-medium transition-colors duration-300 ${currentPage === link.page
+                    ? 'text-amber-400'
+                    : 'text-gray-300 hover:text-amber-400'
+                    }`}
                 >
                   {link.label}
                 </button>
               ))}
             </nav>
             <div className="hidden md:block">
-              <button 
+              <button
                 onClick={() => setCurrentPage('contact')}
                 className="bg-amber-400 text-slate-900 font-bold py-2 px-6 rounded-md hover:bg-amber-300 transition-colors duration-300 shadow-lg shadow-amber-400/20"
               >
@@ -89,14 +88,13 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-xs bg-slate-900 shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-full w-full max-w-xs bg-slate-900 shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
         role="dialog"
         aria-modal="true"
       >
         <div className="flex justify-end p-6">
-          <button 
+          <button
             onClick={() => setIsMenuOpen(false)}
             className="text-gray-300 hover:text-amber-400"
             aria-label="Close menu"
@@ -109,11 +107,10 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             <button
               key={link.page}
               onClick={() => handleNavClick(link.page)}
-              className={`text-2xl font-medium transition-colors duration-300 ${
-                currentPage === link.page
-                  ? 'text-amber-400'
-                  : 'text-gray-300 hover:text-amber-400'
-              }`}
+              className={`text-2xl font-medium transition-colors duration-300 ${currentPage === link.page
+                ? 'text-amber-400'
+                : 'text-gray-300 hover:text-amber-400'
+                }`}
             >
               {link.label}
             </button>
@@ -126,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
           </button>
         </nav>
       </div>
-      
+
       {/* Menu Overlay */}
       {isMenuOpen && (
         <div
