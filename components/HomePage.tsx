@@ -7,12 +7,12 @@ interface HomePageProps {
 }
 
 const galleryItems = [
-    { src: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop", caption: "Corporate Event Security" },
-    { src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop", caption: "Private Party Monitoring" },
-    { src: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=400&fit=crop", caption: "Concert Crowd Management" },
-    { src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop", caption: "VIP & Celebrity Protection" },
-    { src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop", caption: "Venue Access Control" },
-    { src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop", caption: "Professional & Alert Team" },
+    { src: "/images/corporate-event-security.jpg.jpg", caption: "Corporate Event Security" },
+    { src: "/images/private-party-monitoring.jpeg", caption: "Private Party Monitoring" },
+    { src: "/images/concert-crowd-management.jpg", caption: "Concert Crowd Management" },
+    { src: "/images/vip-celebrity-management.jpg.jpg", caption: "VIP & Celebrity Protection" },
+    { src: "/images/venue-access-control.jpg", caption: "Venue Access Control" },
+    { src: "/images/professional-alert-team.jpg", caption: "Professional & Alert Team" },
 ];
 
 const testimonials = [
