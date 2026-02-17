@@ -64,7 +64,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
             {/* Hero Section */}
             <section
                 className="relative h-[80vh] min-h-[500px] flex items-center justify-center text-center text-white"
-                style={{ backgroundImage: `url('https://picsum.photos/1920/1080?grayscale&blur=2&random=1')` }}
+                style={{ backgroundImage: `url("/images/eagleeyebanner.png")` }}
             >
                 <div className="absolute inset-0 bg-slate-900 bg-opacity-70"></div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
