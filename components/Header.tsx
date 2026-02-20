@@ -46,8 +46,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
               className="flex items-center cursor-pointer"
               onClick={() => setCurrentPage('home')}
             >
-              <img src="/logo.png" alt="Eagle Eye Logo" className="h-12 w-auto object-contain" />
-              <span className="ml-3 text-2xl font-bold text-white tracking-wider">
+              <img src="/logo.png" alt="Eagle Eye Logo" className="h-10 md:h-12 w-auto object-contain" />
+              <span className="ml-2 md:ml-3 text-xl md:text-2xl font-bold text-white tracking-wider">
                 EAGLE <span className="text-amber-400">EYE</span>
               </span>
             </div>
@@ -93,7 +93,13 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
         role="dialog"
         aria-modal="true"
       >
-        <div className="flex justify-end p-6">
+        <div className="flex justify-between items-center p-6 border-b border-amber-400/10">
+          <div className="flex items-center">
+            <img src="/logo.png" alt="Eagle Eye Logo" className="h-8 w-auto object-contain" />
+            <span className="ml-2 text-lg font-bold text-white tracking-wider">
+              EAGLE <span className="text-amber-400">EYE</span>
+            </span>
+          </div>
           <button
             onClick={() => setIsMenuOpen(false)}
             className="text-gray-300 hover:text-amber-400"

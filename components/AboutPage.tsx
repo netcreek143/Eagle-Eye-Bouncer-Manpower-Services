@@ -36,12 +36,12 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="order-1 lg:order-2">
-            <img 
-              src="https://picsum.photos/600/700?random=2" 
+            <img
+              src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=1000"
               alt="Professional security team"
-              className="rounded-lg shadow-2xl w-full h-auto object-cover border-4 border-amber-400/30"
+              className="rounded-lg shadow-2xl w-full h-[300px] md:h-auto object-cover border-4 border-amber-400/30"
             />
           </div>
         </div>
