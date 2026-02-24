@@ -10,6 +10,7 @@ const ServiceForm: React.FC<ServiceFormProps> = ({ serviceTitle }) => {
         name: '',
         email: '',
         phone: '',
+        location: '',
         message: '',
     });
 
@@ -21,21 +22,24 @@ const ServiceForm: React.FC<ServiceFormProps> = ({ serviceTitle }) => {
     };
 
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        setStatus('Submitting...');
-        console.log(`Inquiry for ${serviceTitle}:`, formData);
-
-        // Simulate API call
-        setTimeout(() => {
-            setStatus('Thank you for your inquiry! We will get back to you shortly.');
-            setFormData({ name: '', email: '', phone: '', message: '' });
-        }, 1500);
+        // We will let the form submit normally to FormSubmit
+        setStatus('Sending...');
     };
 
     return (
         <div className="bg-slate-950 p-6 rounded-lg border border-amber-400/20">
             <h3 className="text-xl font-bold text-white mb-4 italic">Inquire about {serviceTitle}</h3>
-            <form onSubmit={handleSubmit} className="space-y-4 text-left">
+            <form
+                action="https://formsubmit.co/sekarsuriya16@gmail.com"
+                method="POST"
+                onSubmit={handleSubmit}
+                className="space-y-4 text-left"
+            >
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_subject" value={`New Inquiry: ${serviceTitle}`} />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value={window.location.href} />
+
                 <div>
                     <label htmlFor="service-name" className="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Full Name</label>
                     <input
@@ -69,6 +73,18 @@ const ServiceForm: React.FC<ServiceFormProps> = ({ serviceTitle }) => {
                             id="service-phone"
                             value={formData.phone}
                             onChange={handleChange}
+                            className="w-full bg-slate-900 border border-slate-800 rounded-md py-2 px-3 text-white focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none transition-all"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="service-location" className="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Event Location</label>
+                        <input
+                            type="text"
+                            name="location"
+                            id="service-location"
+                            value={formData.location}
+                            onChange={handleChange}
+                            placeholder="e.g. City, Venue"
                             className="w-full bg-slate-900 border border-slate-800 rounded-md py-2 px-3 text-white focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none transition-all"
                         />
                     </div>

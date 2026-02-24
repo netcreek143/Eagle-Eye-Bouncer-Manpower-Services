@@ -1,19 +1,12 @@
 
 import React, { useState } from 'react';
+import ServiceModal from './ServiceModal';
 import type { Page } from '../App';
 
 interface HomePageProps {
     setCurrentPage: (page: Page) => void;
 }
 
-const galleryItems = [
-    { src: "/images/corporate-event-security.jpg.jpg", caption: "Corporate Event Security" },
-    { src: "/images/private-party-monitoring.jpeg", caption: "Private Party Monitoring" },
-    { src: "/images/concert-crowd-management.jpg", caption: "Concert Crowd Management" },
-    { src: "/images/vip-celebrity-management.jpg.jpg", caption: "VIP & Celebrity Protection" },
-    { src: "/images/venue-access-control.jpg", caption: "Venue Access Control" },
-    { src: "/images/professional-alert-team.jpg", caption: "Professional & Alert Team" },
-];
 
 const testimonials = [
     {
@@ -56,7 +49,24 @@ const faqs = [
     }
 ];
 
+
+interface Service {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+const services: Service[] = [
+    { icon: 'fas fa-user-shield', title: 'Bouncer & Security Services', description: 'Highly-trained bouncers and security personnel for events, parties, and venues to ensure crowd control and safety.' },
+    { icon: 'fas fa-user-tie', title: 'Receptionist Staffing', description: 'Professional and courteous receptionists to manage your front desk and create a welcoming environment for your guests.' },
+    { icon: 'fas fa-broom', title: 'House Keeping Services', description: 'Reliable and efficient housekeeping staff for residential, commercial, and industrial properties to maintain cleanliness.' },
+    { icon: 'fas fa-hard-hat', title: 'Non-Skilled Labour Supply', description: 'Providing a dedicated workforce for various non-skilled labour requirements across different sectors.' },
+    { icon: 'fas fa-users', title: 'Manpower for Events', description: 'Complete manpower solutions for events, including loading/unloading crews and general support staff.' },
+    { icon: 'fas fa-graduation-cap', title: 'Fresher Placement', description: 'Connecting Diploma, ITI, and Engineering freshers with opportunities in various industries.' },
+];
+
 const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
+    const [selectedService, setSelectedService] = useState<Service | null>(null);
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     return (
@@ -70,7 +80,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
 
                 <div className="relative z-10 w-full max-w-4xl">
-                    <h1 className="text-3xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 leading-tight">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 leading-tight">
                         <span className="text-amber-400">Elite Security</span> <br className="hidden sm:block" /> & Manpower Solutions
                     </h1>
                     <p className="text-base md:text-xl max-w-2xl mx-auto text-gray-300 mb-8 px-4">
@@ -78,7 +88,10 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
                         <button
-                            onClick={() => setCurrentPage('services')}
+                            onClick={() => {
+                                const element = document.getElementById('our-services');
+                                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                            }}
                             className="w-full sm:w-auto bg-amber-400 text-slate-900 font-bold py-3 px-8 rounded-md text-lg hover:bg-amber-300 transition-all duration-300 transform hover:scale-105"
                         >
                             Our Services
@@ -92,6 +105,45 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                     </div>
                 </div>
             </section>
+
+            {/* Our Services Section - New Priority Section */}
+            <section id="our-services" className="py-20 bg-slate-950 scroll-mt-20">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-white">
+                            Our <span className="text-amber-400">Services</span>
+                        </h2>
+                        <p className="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">
+                            Comprehensive solutions to meet your security and manpower needs. Click on a service to learn more or request a quote.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                        {services.map((service, index) => (
+                            <div
+                                key={index}
+                                onClick={() => setSelectedService(service)}
+                                className="bg-slate-900 p-6 md:p-8 rounded-lg border border-amber-400/20 flex flex-col items-center text-center transform hover:-translate-y-2 transition-all duration-300 cursor-pointer hover:border-amber-400/50 group"
+                            >
+                                <div className="bg-amber-400/10 p-4 rounded-full mb-6 group-hover:bg-amber-400/20 transition-colors">
+                                    <i className={`${service.icon} text-amber-400 text-3xl md:text-4xl`}></i>
+                                </div>
+                                <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 group-hover:text-amber-400 transition-colors">{service.title}</h3>
+                                <p className="text-gray-400 text-sm md:text-base flex-grow">{service.description}</p>
+                                <div className="mt-6 text-amber-400 font-medium flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    View Details <i className="fas fa-arrow-right text-sm"></i>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Selected Service Modal */}
+            <ServiceModal
+                service={selectedService}
+                onClose={() => setSelectedService(null)}
+            />
 
             {/* Why Choose Us Section */}
             <section className="py-20 bg-slate-950">
@@ -125,26 +177,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 </div>
             </section>
 
-            {/* Gallery Section */}
-            <section className="py-20 bg-slate-900">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white">Our Professionals in <span className="text-amber-400">Action</span></h2>
-                        <p className="text-gray-400 mt-4 max-w-2xl mx-auto">A glimpse into the professional and secure environments we create.</p>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {galleryItems.map((item, index) => (
-                            <div key={index} className="group relative overflow-hidden rounded-lg shadow-lg">
-                                <img src={item.src} alt={item.caption} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-                                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300"></div>
-                                <div className="absolute bottom-0 left-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                    <h3 className="text-white text-lg font-semibold">{item.caption}</h3>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Testimonials Section */}
             <section className="py-20 bg-slate-950">

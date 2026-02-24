@@ -9,6 +9,7 @@ const ContactPage: React.FC = () => {
     name: '',
     email: '',
     phone: '',
+    location: '',
     service: '',
     message: '',
   });
@@ -21,14 +22,7 @@ const ContactPage: React.FC = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('Submitting...');
-    console.log('Form data submitted:', formData);
-    // In a real app, you would send this to a backend.
-    setTimeout(() => {
-      setStatus('Your message has been sent successfully!');
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    }, 1500);
+    setStatus('Sending...');
   };
 
   return (
@@ -46,7 +40,17 @@ const ContactPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           <div className="bg-slate-950 p-6 md:p-8 rounded-lg border border-amber-400/20 order-2 lg:order-1">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">Send a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+            <form
+              action="https://formsubmit.co/eagleisecure360degri@gmail.com"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-4 md:space-y-6"
+            >
+              {/* FormSubmit Configuration */}
+              <input type="hidden" name="_subject" value="New Contact Form Submission" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value={window.location.href} />
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
@@ -62,6 +66,12 @@ const ContactPage: React.FC = () => {
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
                   <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white focus:ring-amber-400 focus:border-amber-400" />
                 </div>
+                <div>
+                  <label htmlFor="location" className="block text-sm font-medium text-gray-300 mb-2">Location</label>
+                  <input type="text" name="location" id="location" value={formData.location} onChange={handleChange} placeholder="e.g. Chennai" className="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white focus:ring-amber-400 focus:border-amber-400" />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">Service of Interest</label>
                   <select name="service" id="service" value={formData.service} onChange={handleChange} className="w-full bg-slate-800 border border-slate-700 rounded-md py-2 px-3 text-white focus:ring-amber-400 focus:border-amber-400">
