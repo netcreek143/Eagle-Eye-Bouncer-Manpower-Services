@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   const navLinks: { page: Page; label: string }[] = [
     { page: 'home', label: 'Home' },
     { page: 'about', label: 'About Us' },
-    { page: 'services', label: 'Services' },
+    { page: 'services', label: 'Our Services' },
     { page: 'contact', label: 'Contact' },
   ];
 

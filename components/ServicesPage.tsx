@@ -59,19 +59,6 @@ const ServicesPage: React.FC = () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">
-            Sectors We <span className="text-amber-400">Serve</span>
-          </h2>
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-4 md:gap-6">
-            {sectors.map((sector, index) => (
-              <div key={index} className="flex flex-col items-center p-4 bg-slate-900 rounded-lg border border-gray-700 w-full sm:w-36">
-                <i className={`${sector.icon} text-amber-400 text-2xl md:text-3xl mb-2`}></i>
-                <span className="text-gray-300 font-medium text-sm md:text-base">{sector.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Selected Service Modal */}
         <ServiceModal
