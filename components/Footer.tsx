@@ -35,7 +35,6 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
             <ul className="space-y-3">
               <li><button onClick={() => setCurrentPage('home')} className="text-gray-400 hover:text-amber-400 transition-colors">Home</button></li>
               <li><button onClick={() => setCurrentPage('about')} className="text-gray-400 hover:text-amber-400 transition-colors">About Us</button></li>
-              <li><button onClick={() => setCurrentPage('services')} className="text-gray-400 hover:text-amber-400 transition-colors">Services</button></li>
               <li><button onClick={() => setCurrentPage('events')} className="text-gray-400 hover:text-amber-400 transition-colors">Events</button></li>
               <li><button onClick={() => setCurrentPage('contact')} className="text-gray-400 hover:text-amber-400 transition-colors">Contact</button></li>
             </ul>
