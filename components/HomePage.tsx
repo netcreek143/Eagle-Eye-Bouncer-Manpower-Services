@@ -72,8 +72,16 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
     return (
         <div className="relative overflow-hidden">
             {/* Our Services Section - New Priority Section */}
-            <section id="our-services" className="py-20 md:py-32 bg-slate-950 scroll-mt-20">
+            <section id="our-services" className="py-16 md:py-28 bg-slate-950 scroll-mt-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="mb-12 md:mb-16">
+                        <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                            Eagle Eye <span className="text-amber-400">Bouncer & Manpower Services</span>
+                        </h1>
+                        <p className="text-gray-400 text-sm md:text-lg max-w-3xl leading-relaxed">
+                            Your premier partner for elite security and manpower solutions. We provide professional, reliable, and vigilant services tailored to your specific needs in Chennai.
+                        </p>
+                    </div>
                     <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
                         {services.map((service, index) => (
                             <div
