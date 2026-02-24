@@ -71,43 +71,8 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
 
     return (
         <div className="relative overflow-hidden">
-            {/* Hero Section */}
-            <section
-                className="relative h-[80vh] min-h-[500px] flex items-center justify-center text-center text-white p-6"
-                style={{ backgroundImage: `url("/images/eagleeyebanner.png")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            >
-                <div className="absolute inset-0 bg-slate-900 bg-opacity-70"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-
-                <div className="relative z-10 w-full max-w-4xl">
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 leading-tight">
-                        <span className="text-amber-400">Elite Security</span> <br className="hidden sm:block" /> & Manpower Solutions
-                    </h1>
-                    <p className="text-base md:text-xl max-w-2xl mx-auto text-gray-300 mb-8 px-4">
-                        Providing vigilant, professional, and reliable bouncer and manpower services for events, corporates, and personal security in Chennai.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
-                        <button
-                            onClick={() => {
-                                const element = document.getElementById('our-services');
-                                if (element) element.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                            className="w-full sm:w-auto bg-amber-400 text-slate-900 font-bold py-3 px-8 rounded-md text-lg hover:bg-amber-300 transition-all duration-300 transform hover:scale-105"
-                        >
-                            Our Services
-                        </button>
-                        <button
-                            onClick={() => setCurrentPage('contact')}
-                            className="w-full sm:w-auto bg-transparent border-2 border-amber-400 text-amber-400 font-bold py-3 px-8 rounded-md text-lg hover:bg-amber-400 hover:text-slate-900 transition-all duration-300 transform hover:scale-105"
-                        >
-                            Contact Us
-                        </button>
-                    </div>
-                </div>
-            </section>
-
             {/* Our Services Section - New Priority Section */}
-            <section id="our-services" className="py-20 bg-slate-950 scroll-mt-20">
+            <section id="our-services" className="py-20 md:py-32 bg-slate-950 scroll-mt-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-extrabold text-white">
@@ -229,7 +194,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentPage }) => {
                 </div>
             </section>
 
-        </div>
+        </div >
     );
 };
 
